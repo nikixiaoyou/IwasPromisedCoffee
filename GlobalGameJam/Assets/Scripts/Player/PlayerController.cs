@@ -51,9 +51,18 @@ namespace ggj
 
         protected virtual void UpdateAnimations()
         {
+            // Walk / Idle animations
             var mag = Rigidbody.velocity.magnitude;
             Anim.SetBool(ANIM_WALK, mag > Epsilon);
             Anim.SetFloat(ANIM_SPEED, Mathf.Lerp(0f, AnimSpeed, mag / Speed));
+
+            // Flip x
+            if (Mathf.Abs(Rigidbody.velocity.x) > Epsilon)
+            {
+                var s = Anim.transform.localScale;
+                s.x = Mathf.Abs(s.x) * Mathf.Sign(Rigidbody.velocity.x);
+                Anim.transform.localScale = s;
+            }
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D col)
