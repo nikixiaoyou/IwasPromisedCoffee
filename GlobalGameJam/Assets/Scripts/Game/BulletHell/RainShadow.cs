@@ -9,12 +9,14 @@ namespace ggj
 
 		private float _speed;
 
-		private const float kDestroyTimer = 3f;
+		private const float kDestroyTimer = 2f;
 
 		public override void Init()
 		{
 			base.Init();
 		}
+
+		public float time = 0f;
 
 		public override void UpdateObject()
 		{
@@ -22,6 +24,7 @@ namespace ggj
 
 			if (IsActive)
 			{
+				time += Time.deltaTime;
 				Vector2 scale = _transform.localScale;
 				float delta = Time.deltaTime * _speed;
 				scale.x += delta;
