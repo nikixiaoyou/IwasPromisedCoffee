@@ -95,4 +95,4 @@ MonoBehaviour:
   pool: {fileID: 0}
   ObjectName: RainShadow
   IsActive: 1
-  InitialSize: 5
+  InitialSize: 0.5

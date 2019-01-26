@@ -24,8 +24,8 @@ namespace ggj
 			{
 				Vector2 scale = _transform.localScale;
 				float delta = Time.deltaTime * _speed;
-				scale.x -= delta;
-				scale.y -= delta;
+				scale.x += delta;
+				scale.y += delta;
 				_transform.localScale = scale;
 			}
 		}
@@ -34,7 +34,7 @@ namespace ggj
 		{
 			base.Activate(position);
 			_transform.localScale = new Vector3(InitialSize, InitialSize, 1);
-			_speed = (InitialSize - 0.5f) / kDestroyTimer;
+			_speed = (5 - InitialSize) / kDestroyTimer;
 			Invoke("SpawnBullet", kDestroyTimer);
 			Invoke("Destroy", kDestroyTimer);
 		}

@@ -17,12 +17,18 @@ public class IceDetection : MonoBehaviour
     public UnityEvent OnIceEnter;
     public UnityEvent OnIceExit;
 
+    private int _iceAmount = 0;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<Ice>() != null)
         {
             OnIceEnter.Invoke();
-            SetIceDelegate();
+            _iceAmount++;
+            if(_iceAmount == 1)
+            {
+                SetIceDelegate();
+            }
         }
     }
 
@@ -31,7 +37,11 @@ public class IceDetection : MonoBehaviour
         if (collider.gameObject.GetComponent<Ice>() != null)
         {
             OnIceExit.Invoke();
-            ClearIceDelegate();
+             _iceAmount--;
+            if (_iceAmount == 1)
+            {
+                ClearIceDelegate();
+            }
         }
     }
 
