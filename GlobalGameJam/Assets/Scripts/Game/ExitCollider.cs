@@ -30,7 +30,15 @@ public class ExitCollider : MonoBehaviour
 
     private IEnumerator GoToNextSceneRoutine()
     {
-        int index = SceneManager.GetActiveScene().buildIndex + 1;
-        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
-    }
+		int total = SceneManager.sceneCountInBuildSettings;
+		int index = SceneManager.GetActiveScene().buildIndex + 1;
+		if (index < total)
+		{
+			yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
+		}
+		else
+		{
+			yield return null;
+		}
+	}
 }

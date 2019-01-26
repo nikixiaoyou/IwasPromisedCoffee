@@ -34,6 +34,11 @@ namespace ggj
             }
         }
 
+        public void UnregisterAll()
+        {
+            _servicesMap.Clear();
+        }
+
         public T Get<T>() where T : new()
         {
             return (T)_servicesMap[typeof(T)];
