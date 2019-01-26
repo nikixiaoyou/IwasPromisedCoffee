@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System;
 
 namespace ggj
 {
@@ -43,6 +43,26 @@ namespace ggj
         {
             _servicesMap.TryGetValue(typeof(T), out object instance);
             return (T)instance;
+        }
+
+        public void GetAsync<T>(Action<T> onLoad) where T : new()
+        {
+            var instance = TryGet<T>();
+            if(instance != null)
+            {
+                onLoad(instance);
+            }
+            GameManager.Instance.StartCoroutine(GetAsyncEnum<T>(onLoad));
+        }
+
+        private IEnumerator GetAsyncEnum<T>(Action<T> onLoad) where T : new()
+        {
+            var type = typeof(T);
+            while(!_servicesMap.ContainsKey(type))
+            {
+                yield return null;
+            }
+            onLoad(Get<T>());
         }
     }
 }
