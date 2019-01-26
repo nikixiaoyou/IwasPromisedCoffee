@@ -21,14 +21,17 @@ namespace ggj
 
         public IModificator Modificator { get; set; }
 
+		private AudioSource _audioSource;
+
 
         protected void Awake()
         {
             this.Register(this);
             Input.SetActorInput();
 
+			_audioSource = this.GetComponent<AudioSource>();
 #if UNITY_STANDALONE_WIN
-            Input.ControllerId = 0;
+			Input.ControllerId = 0;
 #else
             Input.ControllerId = 1;
 #endif
@@ -41,13 +44,15 @@ namespace ggj
 
         protected virtual void UpdateMove()
         {
-            if(Modificator != null)
+			Vector2 inputAxis = new Vector2(Input.Horizontal_L, Input.Vertical_L);
+
+			if (Modificator != null)
             {
                 Modificator.UpdateMove(this);
             }
             else
             {
-				Vector2 inputAxis = new Vector2(Input.Horizontal_L, Input.Vertical_L);
+				
 				if (inputAxis.magnitude > 1)
 				{
 					inputAxis = inputAxis.normalized;
@@ -55,6 +60,17 @@ namespace ggj
 
 				Rigidbody.velocity = Speed * inputAxis;
             }
+
+
+			if(inputAxis != Vector2.zero && _audioSource != null)
+			{
+				_audioSource.pitch = inputAxis.magnitude * 1.5f;
+			}
+			else
+			{
+				_audioSource.pitch = 0;
+			}
+
         }
 
         protected virtual void UpdateAnimations()

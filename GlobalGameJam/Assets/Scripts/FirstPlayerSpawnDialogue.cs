@@ -25,6 +25,8 @@ public class FirstPlayerSpawnDialogue : MonoBehaviour
 		yield return new WaitForSeconds(_timeWaitBeforeSpawnDialogue);
 
 		GameObject.Instantiate(_dialogueTonInstantiate, this.transform);
+
+
 	}
 
 }
