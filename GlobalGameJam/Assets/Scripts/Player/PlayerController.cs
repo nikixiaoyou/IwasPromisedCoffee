@@ -12,6 +12,7 @@ namespace ggj
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
         public Animator Anim;
+        public SpriteRenderer Shell;
 
         public float Speed = 5f;
         public float AnimSpeed = 2f;
