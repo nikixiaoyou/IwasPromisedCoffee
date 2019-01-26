@@ -29,7 +29,10 @@ namespace ggj
 
         public static void UnRegister<T>(this MonoBehaviour mb, T instance) where T : new()
         {
-            GameManager.Instance.Services.UnRegister(instance);
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.Services.UnRegister(instance);
+            }
         }
     }
 }

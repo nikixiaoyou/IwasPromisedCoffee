@@ -15,7 +15,5 @@ namespace ggj
         {
             this.UnRegister(this);
         }
-
-
     }
 }
