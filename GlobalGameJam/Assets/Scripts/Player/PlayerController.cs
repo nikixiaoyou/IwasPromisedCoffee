@@ -44,19 +44,9 @@ namespace ggj
             }
         }
 
-        protected virtual void OnCollisionEnter(Collision col)
+        protected virtual void OnCollisionEnter2D(Collision2D col)
         {
 
-        }
-
-        protected virtual void OnTriggerEnter(Collider col)
-        {
-            var crabShell = col.gameObject.GetComponent<CrabShellController>();
-            Debug.Log("Hit " + col.gameObject.name);
-            if (crabShell != null)
-            {
-                crabShell.Bump();
-            }
         }
 
         protected virtual void Update()
