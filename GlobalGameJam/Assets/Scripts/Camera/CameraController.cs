@@ -26,7 +26,7 @@ namespace ggj
             var p = player.transform.position;
             var currentPos = transform.position;
 
-            transform.position = new Vector3(p.x, p.y, currentPos.z);
+            //transform.position = new Vector3(p.x, p.y, currentPos.z);
         }
 
     }

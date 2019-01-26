@@ -7,6 +7,7 @@ namespace ggj
     public class PlayerController : MonoBehaviour
     {
         public ActorInput Input;
+        public Rigidbody2D Rigidbody;
 
         protected void Awake()
         {
@@ -22,6 +23,8 @@ namespace ggj
         protected void Update()
         {
             Input.UpdateInput();
+
+            Rigidbody.velocity = new Vector2(Input.Horizontal_L, Input.Vertical_L);
         }
     }
 }

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6497626920071878493}
   - component: {fileID: 8774367052361200182}
   - component: {fileID: 1175360777548116367}
+  - component: {fileID: 841283625401638255}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -125,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Input: {fileID: 1175360777548116367}
+  Rigidbody: {fileID: 841283625401638255}
 --- !u!114 &1175360777548116367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +141,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CtrlChoice: 1
   ControllerId: 1
+--- !u!50 &841283625401638255
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774367052361200181}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
