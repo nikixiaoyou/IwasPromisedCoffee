@@ -21,7 +21,7 @@ namespace ggj
             this.UnRegister(this);
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             Input.UpdateInput();
 
