@@ -7,12 +7,14 @@ namespace ggj
     public class PlayerController : MonoBehaviour
     {
         private const string ANIM_WALK = "Walk";
+        private const string ANIM_SPEED = "Speed";
 
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
         public Animator Anim;
 
         public float Speed = 5f;
+        public float AnimSpeed = 2f;
         public float Epsilon = 0.05f;
 
         public IModificator Modificator { get; set; }
@@ -45,7 +47,13 @@ namespace ggj
             {
                 Rigidbody.velocity = Speed * new Vector2(Input.Horizontal_L, Input.Vertical_L).normalized;
             }
-            Anim.SetBool(ANIM_WALK, Rigidbody.velocity.magnitude > Epsilon);
+        }
+
+        protected virtual void UpdateAnimations()
+        {
+            var mag = Rigidbody.velocity.magnitude;
+            Anim.SetBool(ANIM_WALK, mag > Epsilon);
+            Anim.SetFloat(ANIM_SPEED, Mathf.Lerp(0f, AnimSpeed, mag / Speed));
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D col)
@@ -57,9 +65,7 @@ namespace ggj
         {
             Input.UpdateInput();
             UpdateMove();
-
-
-
+            UpdateAnimations();
         }
     }
 }
