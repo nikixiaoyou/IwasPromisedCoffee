@@ -840,7 +840,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c23b103c98cf6c24aa5b928fe8452313, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cd52715e0b011040a0502857e8bf7cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -903,6 +903,7 @@ MonoBehaviour:
   Input: {fileID: 1175360777548116367}
   Rigidbody: {fileID: 841283625401638255}
   Anim: {fileID: 9154710119006942243}
+  ShellType: 0
   Shell: {fileID: 6879886818699061317}
   Speed: 10
   AnimSpeed: 2

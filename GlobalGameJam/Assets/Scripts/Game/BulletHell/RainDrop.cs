@@ -12,11 +12,6 @@ namespace ggj
 		{
 			base.UpdateObject();
 
-			if (_transform == null)
-			{
-				Debug.Log("H");
-			}
-
 			_transform.position -= Time.deltaTime * new Vector3(0, _dropSpeed);
 		}
 
