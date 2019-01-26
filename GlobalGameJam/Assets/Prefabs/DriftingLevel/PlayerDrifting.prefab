@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1177058355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22493824, y: 0.22493824, z: 0.22493824}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 7649632025589277679}
   m_RootOrder: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 58307432934797095}
   - component: {fileID: 973841963097871188}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerDrifting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
