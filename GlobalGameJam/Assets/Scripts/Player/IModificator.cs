@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IModificator 
+namespace ggj
 {
-    void UpdateMove();
+    public interface IModificator
+    {
+        void UpdateMove();
+    }
 }
