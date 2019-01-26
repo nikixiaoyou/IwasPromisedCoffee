@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Undefined
   - Bullet
+  - Safe
   layers:
   - Default
   - TransparentFX

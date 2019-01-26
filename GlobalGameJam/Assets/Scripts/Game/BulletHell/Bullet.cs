@@ -23,5 +23,13 @@ namespace ggj
 				Destroy();
 			}
 		}
+
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			if (collision.tag == "Safe")
+			{
+				Destroy();
+			}
+		}
 	}
 }
