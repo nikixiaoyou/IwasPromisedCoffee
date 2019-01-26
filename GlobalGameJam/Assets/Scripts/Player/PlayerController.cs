@@ -8,6 +8,7 @@ namespace ggj
     {
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
+		public float MoveSpeed;
 
         protected void Awake()
         {
@@ -24,7 +25,7 @@ namespace ggj
         {
             Input.UpdateInput();
 
-            Rigidbody.velocity = new Vector2(Input.Horizontal_L, Input.Vertical_L);
+            Rigidbody.velocity = new Vector2(Input.Horizontal_L, Input.Vertical_L) * MoveSpeed;
         }
     }
 }
