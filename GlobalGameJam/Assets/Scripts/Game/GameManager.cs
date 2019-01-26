@@ -24,5 +24,10 @@ namespace ggj
             }
             Services = new ServicesLocator();
         }
+
+        protected void OnDestroy()
+        {
+            Instance = null;
+        }
     }
 }

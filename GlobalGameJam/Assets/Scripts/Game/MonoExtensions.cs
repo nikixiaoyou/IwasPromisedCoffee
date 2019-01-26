@@ -21,5 +21,18 @@ namespace ggj
         {
             GameManager.Instance.Services.GetAsync(onLoad);
         }
+
+        public static void Register<T>(this MonoBehaviour mb, T instance) where T : new()
+        {
+            GameManager.Instance.Services.Register(instance);
+        }
+
+        public static void UnRegister<T>(this MonoBehaviour mb, T instance) where T : new()
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.Services.UnRegister(instance);
+            }
+        }
     }
 }
