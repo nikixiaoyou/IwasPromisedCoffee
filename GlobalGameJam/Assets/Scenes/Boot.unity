@@ -460,5 +460,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 52.101
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.09999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.22493999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.43916327
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.89840734
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507588098561429, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296507587982618297, guid: 5d64776fd3ebc4dc5a64d8ab0579d501,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -39.558002
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d64776fd3ebc4dc5a64d8ab0579d501, type: 3}
