@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -181,27 +181,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &369582691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8774367052361200181, guid: 35b9780e2a2404ceb8ba59df669c80b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 570674233}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &369582699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369582691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c165b00c27a6444a7a369a733a81b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeWaitBeforeSpawnDialogue: 1.5
-  _dialogueTonInstantiate: {fileID: 1693559579367601403, guid: e5ddc47d6d601ff4e849e96a67aa9f14,
-    type: 3}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -153858,11 +153837,6 @@ PrefabInstance:
     - target: {fileID: 6497626920071878493, guid: 35b9780e2a2404ceb8ba59df669c80b8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1175360777548116367, guid: 35b9780e2a2404ceb8ba59df669c80b8,
-        type: 3}
-      propertyPath: CtrlChoice
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
