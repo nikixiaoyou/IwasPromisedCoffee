@@ -36,7 +36,7 @@ namespace ggj
         {
             if(Modificator != null)
             {
-                Modificator.UpdateMove();
+                Modificator.UpdateMove(this);
             }
             else
             {
@@ -52,6 +52,7 @@ namespace ggj
         protected virtual void OnTriggerEnter(Collider col)
         {
             var crabShell = col.gameObject.GetComponent<CrabShellController>();
+            Debug.Log("Hit " + col.gameObject.name);
             if (crabShell != null)
             {
                 crabShell.Bump();
