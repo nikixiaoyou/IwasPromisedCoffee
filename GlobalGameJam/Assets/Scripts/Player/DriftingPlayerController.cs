@@ -10,7 +10,7 @@ namespace ggj
         {
             Input.UpdateInput();
 
-            Rigidbody.AddForce(new Vector2(Input.Horizontal_L, Input.Vertical_L) * MoveSpeed);
+            Rigidbody.AddForce(new Vector2(Input.Horizontal_L, Input.Vertical_L) * Speed);
         }
     }
 }
