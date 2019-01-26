@@ -53,7 +53,7 @@ MonoBehaviour:
   Rigidbody: {fileID: 841283625401638255}
   Anim: {fileID: 9154710119006942243}
   Speed: 10
-  AnimSpeed: 2
+  AnimSpeed: 10
   Epsilon: 0.05
 --- !u!114 &1175360777548116367
 MonoBehaviour:

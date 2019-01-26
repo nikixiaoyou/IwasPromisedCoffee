@@ -45,7 +45,13 @@ namespace ggj
             }
             else
             {
-                Rigidbody.velocity = Speed * new Vector2(Input.Horizontal_L, Input.Vertical_L).normalized;
+				Vector2 inputAxis = new Vector2(Input.Horizontal_L, Input.Vertical_L);
+				if (inputAxis.magnitude > 1)
+				{
+					inputAxis = inputAxis.normalized;
+				}
+
+				Rigidbody.velocity = Speed * inputAxis;
             }
         }
 
