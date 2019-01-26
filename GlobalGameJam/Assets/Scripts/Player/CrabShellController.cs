@@ -36,8 +36,7 @@ namespace ggj
         {
             var player = this.Get<PlayerController>();
             if (col.gameObject == player.gameObject && 
-                _bumping == null && 
-                _shellState != ShellState.taken)
+                _bumping == null)
             {
                 _bumping = Bump(col);
                 StartCoroutine(_bumping);
@@ -55,7 +54,6 @@ namespace ggj
 
         private IEnumerator Bump(Collision2D col)
         {
-            Debug.Log("bump.");
             Col.isTrigger = true;
             var start = Time.time;
 
@@ -66,19 +64,13 @@ namespace ggj
             yield return new WaitForSeconds(HitIdle);
 
             yield return YieldPlay(ANIM_BACK);
-
-            if(_shellState == ShellState.availabe)
-            {
-                _shellState = ShellState.notAvailable;
-            }
+            _shellState = ShellState.notAvailable;
             Col.isTrigger = false;
             _bumping = null;
-            Debug.Log("done!");
         }
 
         private IEnumerator YieldPlay(string clipName)
         {
-            Debug.Log("play " + clipName);
             var clip = Anim[clipName];
             Anim.Play(clipName);
             while (clip.enabled)
