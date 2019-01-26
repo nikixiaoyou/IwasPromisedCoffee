@@ -10,7 +10,7 @@ public class IceDetection : MonoBehaviour
     {
         public void UpdateMove(PlayerController player)
         {
-            Rigidbody.AddForce(new Vector2(player.Input.Horizontal_L, player.Input.Vertical_L) * Speed);
+            player.Rigidbody.AddForce(new Vector2(player.Input.Horizontal_L, player.Input.Vertical_L) * player.Speed);
         }
     }
 
@@ -22,6 +22,7 @@ public class IceDetection : MonoBehaviour
         if (collider.gameObject.GetComponent<Ice>() != null)
         {
             OnIceEnter.Invoke();
+            SetIceDelegate();
         }
     }
 
@@ -30,11 +31,17 @@ public class IceDetection : MonoBehaviour
         if (collider.gameObject.GetComponent<Ice>() != null)
         {
             OnIceExit.Invoke();
+            ClearIceDelegate();
         }
     }
 
     private void SetIceDelegate()
     {
+        this.Get<PlayerController>().Modificator = new IceMovementDelegate();
+    }
 
+    private void ClearIceDelegate()
+    {
+        this.Get<PlayerController>().Modificator = null;
     }
 }
