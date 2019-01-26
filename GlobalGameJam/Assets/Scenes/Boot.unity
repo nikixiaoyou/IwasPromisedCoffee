@@ -332,6 +332,11 @@ PrefabInstance:
       propertyPath: CtrlChoice
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1175360777548116367, guid: 35b9780e2a2404ceb8ba59df669c80b8,
+        type: 3}
+      propertyPath: ControllerId
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b9780e2a2404ceb8ba59df669c80b8, type: 3}
 --- !u!1001 &2347627913030030576
