@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrabShellController : MonoBehaviour
+namespace ggj
 {
-
-    public void Bump()
+    public class CrabShellController : MonoBehaviour
     {
-        Debug.Log("BUmp!");
+        public void Bump()
+        {
+            Debug.Log("BUmp!");
+        }
     }
 }
