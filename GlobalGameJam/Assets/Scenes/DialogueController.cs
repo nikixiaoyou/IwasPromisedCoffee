@@ -51,7 +51,6 @@ public class DialogueController : MonoBehaviour
 		_dialogue.gameObject.SetActive(false);
 		_arrow.gameObject.SetActive(false);
 
-
 		LaunchDialogue();
 	}
 
