@@ -19,7 +19,6 @@ namespace ggj
 
             player.Shell.sprite = shell;
             Shell.sprite = playerShell;
-            Debug.Log("SWAPPPP!");
         }
 
 
