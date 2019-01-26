@@ -23,6 +23,10 @@ namespace ggj
         protected void LateUpdate()
         {
             var player = this.Get<PlayerController>();
+            if(player == null)
+            {
+                return;
+            }
             var p = player.transform.position;
             var currentPos = transform.position;
 
