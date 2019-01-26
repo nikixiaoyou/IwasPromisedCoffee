@@ -6,11 +6,16 @@ namespace ggj
 {
     public class PlayerController : MonoBehaviour
     {
+        private const string ANIM_WALK = "Walk";
+        private const string ANIM_SPEED = "Speed";
+
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
+        public Animator Anim;
 
         public float Speed = 5f;
-
+        public float AnimSpeed = 2f;
+        public float Epsilon = 0.05f;
 
         public IModificator Modificator { get; set; }
 
@@ -44,28 +49,23 @@ namespace ggj
             }
         }
 
-        protected virtual void OnCollisionEnter(Collision col)
+        protected virtual void UpdateAnimations()
         {
-
+            var mag = Rigidbody.velocity.magnitude;
+            Anim.SetBool(ANIM_WALK, mag > Epsilon);
+            Anim.SetFloat(ANIM_SPEED, Mathf.Lerp(0f, AnimSpeed, mag / Speed));
         }
 
-        protected virtual void OnTriggerEnter(Collider col)
+        protected virtual void OnCollisionEnter2D(Collision2D col)
         {
-            var crabShell = col.gameObject.GetComponent<CrabShellController>();
-            Debug.Log("Hit " + col.gameObject.name);
-            if (crabShell != null)
-            {
-                crabShell.Bump();
-            }
+
         }
 
         protected virtual void Update()
         {
             Input.UpdateInput();
             UpdateMove();
-
-
-
+            UpdateAnimations();
         }
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5296507587602596896}
   - component: {fileID: 5296507587602596899}
   - component: {fileID: 5296507587602596898}
-  - component: {fileID: 6471758262562061821}
   - component: {fileID: 1501943212}
   m_Layer: 0
   m_Name: CrabFriend01
@@ -48,6 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d9c0da122d54a099fa79c329aa1300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Col: {fileID: 1501943212}
+  Crab: {fileID: 5296507588098561429}
+  Shell: {fileID: 5296507587982618297}
+  OutTime: 2
+  BackTime: 2
 --- !u!50 &5296507587602596898
 Rigidbody2D:
   serializedVersion: 4
@@ -62,29 +66,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 10
   m_LinearDrag: 5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6471758262562061821
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296507587602596901}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.08
 --- !u!58 &1501943212
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -100,7 +88,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1
 --- !u!1 &5296507587982618299
 GameObject:
   m_ObjectHideFlags: 0
