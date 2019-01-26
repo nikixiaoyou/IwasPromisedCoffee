@@ -8,12 +8,19 @@ namespace ggj
     {
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
-		public float MoveSpeed;
+        public float Speed = 2f;
+
 
         protected void Awake()
         {
             this.Register(this);
             Input.SetActorInput();
+
+#if UNITY_STANDALONE_WIN
+            Input.ControllerId = 0;
+#else
+            Input.ControllerId = 1;
+#endif
         }
 
         protected void OnDestroy()
@@ -21,11 +28,13 @@ namespace ggj
             this.UnRegister(this);
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             Input.UpdateInput();
 
-            Rigidbody.velocity = new Vector2(Input.Horizontal_L, Input.Vertical_L) * MoveSpeed;
+            var v = Speed * new Vector2(Input.Horizontal_L, Input.Vertical_L);
+
+            Rigidbody.velocity = v;
         }
     }
 }
