@@ -8,7 +8,11 @@ namespace ggj
     {
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
-        public float Speed = 2f;
+
+        public float Speed = 5f;
+
+
+        public IModificator Modificator { get; set; }
 
 
         protected void Awake()
@@ -28,13 +32,39 @@ namespace ggj
             this.UnRegister(this);
         }
 
+        protected virtual void UpdateMove()
+        {
+            if(Modificator != null)
+            {
+                Modificator.UpdateMove();
+            }
+            else
+            {
+                Rigidbody.velocity = Speed * new Vector2(Input.Horizontal_L, Input.Vertical_L).normalized;
+            }
+        }
+
+        protected virtual void OnCollisionEnter(Collision col)
+        {
+
+        }
+
+        protected virtual void OnTriggerEnter(Collider col)
+        {
+            var crabShell = col.gameObject.GetComponent<CrabShellController>();
+            if (crabShell != null)
+            {
+                crabShell.Bump();
+            }
+        }
+
         protected virtual void Update()
         {
             Input.UpdateInput();
+            UpdateMove();
 
-            var v = Speed * new Vector2(Input.Horizontal_L, Input.Vertical_L);
 
-            Rigidbody.velocity = v;
+
         }
     }
 }
