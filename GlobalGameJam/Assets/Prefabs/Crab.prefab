@@ -488,9 +488,6 @@ GameObject:
   m_Component:
   - component: {fileID: 962345860625555201}
   - component: {fileID: 620053946089338738}
-  - component: {fileID: 195683765}
-  - component: {fileID: 195683766}
-  - component: {fileID: 4881983369170812960}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -507,7 +504,7 @@ Transform:
   m_GameObject: {fileID: 8996410469641479374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40705, y: 0.40705, z: 0.40705}
   m_Children:
   - {fileID: 117026710586431816}
   m_Father: {fileID: 0}
@@ -532,56 +529,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &195683765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8996410469641479374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1409730395d154489a14386f516a27d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CtrlChoice: 1
-  ControllerId: 1
---- !u!114 &195683766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8996410469641479374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d4d0285fe4144e29dd6196da3177d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Input: {fileID: 195683765}
-  Rigidbody: {fileID: 4881983369170812960}
-  Speed: 2
---- !u!50 &4881983369170812960
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8996410469641479374}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &8996410469854176032
 GameObject:
   m_ObjectHideFlags: 0
