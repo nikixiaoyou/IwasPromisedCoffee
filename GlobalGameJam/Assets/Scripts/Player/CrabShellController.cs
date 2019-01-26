@@ -6,13 +6,14 @@ namespace ggj
 {
     public class CrabShellController : MonoBehaviour
     {
-        public Collider2D Col;
-        public Transform Crab;
-        public Transform Shell;
+        private const string ANIM_HIT = "CrabHit";
+        private const string ANIM_BACK = "CrabBack";
 
-        public float Distance;
-        public float OutTime;
-        public float BackTime;
+        public Collider2D Col;
+        public Animation Anim;
+
+        public float HitIdle;
+
 
         private IEnumerator _bumping;
 
@@ -31,19 +32,26 @@ namespace ggj
             Debug.Log("bump.");
             Col.isTrigger = true;
             var start = Time.time;
-            var c = col.contacts[0];
-            var dir = -1f * c.normal;
 
+            yield return YieldPlay(ANIM_HIT);
+            yield return new WaitForSeconds(HitIdle);
 
-            while(Time.time < start + OutTime)
-            {
+            yield return YieldPlay(ANIM_BACK);
 
-
-                yield return null;
-            }
             Col.isTrigger = false;
             _bumping = null;
             Debug.Log("done!");
+        }
+
+        private IEnumerator YieldPlay(string clipName)
+        {
+            Debug.Log("play " + clipName);
+            var clip = Anim[clipName];
+            Anim.Play(clipName);
+            while (clip.enabled)
+            {
+                yield return null;
+            }
         }
     }
 }

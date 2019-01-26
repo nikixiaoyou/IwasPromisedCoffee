@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5296507587602596899}
   - component: {fileID: 5296507587602596898}
   - component: {fileID: 1501943212}
+  - component: {fileID: 1828326570}
   m_Layer: 0
   m_Name: CrabFriend01
   m_TagString: Untagged
@@ -48,10 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1501943212}
-  Crab: {fileID: 5296507588098561429}
-  Shell: {fileID: 5296507587982618297}
-  OutTime: 2
-  BackTime: 2
+  Anim: {fileID: 1828326570}
+  HitIdle: 2
 --- !u!50 &5296507587602596898
 Rigidbody2D:
   serializedVersion: 4
@@ -89,6 +88,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!111 &1828326570
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296507587602596901}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 89d34e346b6dc48b3856567292e5f96b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 89d34e346b6dc48b3856567292e5f96b, type: 2}
+  - {fileID: 7400000, guid: 4c0134265477e42209b98bfe0813c1e1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5296507587982618299
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +135,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5296507587602596896}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -39.558002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -91.90707}
 --- !u!212 &5296507587982618296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -198,7 +214,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5296507587602596896}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 52.101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 107.49934}
 --- !u!212 &5296507588098561426
 SpriteRenderer:
   m_ObjectHideFlags: 0
