@@ -6,6 +6,6 @@ namespace ggj
 {
     public interface IModificator
     {
-        void UpdateMove();
+        void UpdateMove(PlayerController player);
     }
 }
