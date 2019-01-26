@@ -4,28 +4,13 @@ using UnityEngine;
 
 namespace ggj
 {
-    public class DriftingPlayerController : MonoBehaviour
+    public class DriftingPlayerController : PlayerController
     {
-        public ActorInput Input;
-        public Rigidbody2D Rigidbody;
-		public float MoveSpeed;
-
-        protected void Awake()
-        {
-            this.Register(this);
-            Input.SetActorInput();
-        }
-
-        protected void OnDestroy()
-        {
-            this.UnRegister(this);
-        }
-
-        protected void Update()
+        protected override void Update()
         {
             Input.UpdateInput();
 
-            Rigidbody.AddForce(new Vector2(Input.Horizontal_L, Input.Vertical_L) * MoveSpeed);
+            Rigidbody.AddForce(new Vector2(Input.Horizontal_L, Input.Vertical_L) * Speed);
         }
     }
 }
