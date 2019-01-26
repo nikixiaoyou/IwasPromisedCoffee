@@ -9,7 +9,7 @@ namespace ggj
 
         public static GameManager Instance { get; private set; }
 
-        public Services Services { get; private set; }
+        public ServicesLocator Services { get; private set; }
 
         protected void Awake()
         {
@@ -22,7 +22,7 @@ namespace ggj
             {
                 Destroy(gameObject);
             }
-            Services = new Services();
+            Services = new ServicesLocator();
         }
     }
 }
