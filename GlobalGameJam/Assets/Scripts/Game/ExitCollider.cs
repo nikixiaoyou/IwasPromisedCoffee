@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ExitCollider : MonoBehaviour
 {
+    private const float _kTransitionTime = 1.0f;
+
     private bool _loading = false;
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,17 +42,21 @@ public class ExitCollider : MonoBehaviour
             yield return null;
         }
         GameManager.Instance.Services.UnregisterAll();
-        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+
         var gos = SceneManager.GetSceneByBuildIndex(index-1).GetRootGameObjects();
         Camera fromCamera = null;
-        foreach(var go in gos)
+        var newRoot = new GameObject();
+        newRoot.transform.position = new Vector3(1000, 0, 0);
+        foreach (var go in gos)
         {
-            go.transform.position -= Camera.main.ScreenToWorldPoint(new Vector3(2*1920, 0, 0));
-            if(fromCamera == null)
+            go.transform.SetParent(newRoot.transform, false);
+            if (fromCamera == null)
             {
                 fromCamera = go.GetComponent<Camera>();
             }
         }
+
+        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
 
         gos = SceneManager.GetSceneByBuildIndex(index).GetRootGameObjects();
         Camera toCamera = null;
@@ -63,13 +69,15 @@ public class ExitCollider : MonoBehaviour
             }
         }
 
-        for (float t = 0; t < 1.0f; t += Time.deltaTime)
+        fromCamera.depth = -10;
+        for (float t = 0; t < _kTransitionTime; t += Time.deltaTime)
         {
-            fromCamera.rect = new Rect(-t, 0, 1, 1);
-            toCamera.rect = new Rect(1-t, 0, 1, 1);
+            var ratio = t/_kTransitionTime;
+            fromCamera.rect = new Rect(0, 0, 1- ratio / _kTransitionTime, 1);
+            toCamera.rect = new Rect(1- ratio, 0, ratio, 1);
             yield return null;
         }
-
+        toCamera.rect = new Rect(0, 0, 1, 1);
         yield return SceneManager.UnloadSceneAsync(index - 1);
     }
 }
