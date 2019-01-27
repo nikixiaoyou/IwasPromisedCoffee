@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,28 +7,24 @@ namespace ggj
 {
     public class GameManager : MonoBehaviour
     {
-
         public static GameManager Instance { get; private set; }
 
         public ServicesLocator Services { get; private set; }
 
-        protected void Awake()
+        public void Destroy()
         {
-            if (Instance == null)
+            if (Instance == this)
             {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
+                Services.UnregisterAll();
+                Instance = null;
             }
-            else
-            {
-                Destroy(gameObject);
-            }
-            Services = new ServicesLocator();
         }
 
-        protected void OnDestroy()
+        protected void Awake()
         {
-            Instance = null;
+            Instance = this;
+           //DontDestroyOnLoad(gameObject);
+            Services = new ServicesLocator();
         }
     }
 }

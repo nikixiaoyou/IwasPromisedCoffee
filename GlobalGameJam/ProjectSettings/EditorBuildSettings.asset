@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: b9ae82c7ff3c06f45b799355edb30781
@@ -17,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BulletHellLevel.unity
     guid: bce9d83cc51334ea7a9514e1a2a3ab8c
+  - enabled: 1
+    path: Assets/Scenes/StealthLevel.unity
+    guid: 4e7eb49ced3e69a4ab14f061fd74127f
+  - enabled: 1
+    path: Assets/Scenes/Outro.unity
+    guid: ba335167a02234624ad7b8160608d5e1
   m_configObjects: {}
