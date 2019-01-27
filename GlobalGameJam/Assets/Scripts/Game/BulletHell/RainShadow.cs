@@ -11,18 +11,26 @@ namespace ggj
 
 		private const float kDestroyTimer = 2f;
 
+		private AudioSource _audioSource;
+
+		private void Awake()
+		{
+			_audioSource = this.GetComponent<AudioSource>();
+		}
+
 		public override void Init()
 		{
 			base.Init();
 		}
 
 		public float time = 0f;
+		private bool OnDestroy = false;
 
 		public override void UpdateObject()
 		{
 			base.UpdateObject();
 
-			if (IsActive)
+			if (IsActive && !OnDestroy )
 			{
 				time += Time.deltaTime;
 				Vector2 scale = _transform.localScale;
@@ -36,14 +44,24 @@ namespace ggj
 		public override void Activate(Vector2 position)
 		{
 			base.Activate(position);
+			OnDestroy = false;
 			_transform.localScale = new Vector3(InitialSize, InitialSize, 1);
 			_speed = (5 - InitialSize) / kDestroyTimer;
 			Invoke("SpawnBullet", kDestroyTimer);
-			Invoke("Destroy", kDestroyTimer);
+			Invoke("DestroyCoroutine", kDestroyTimer);
 		}
 
-		public override void Destroy()
+		public  void DestroyCoroutine()
 		{
+			OnDestroy = true;
+			_transform.localScale = Vector3.zero;
+			StartCoroutine(DestroySFX());
+		}
+
+		public IEnumerator DestroySFX()
+		{
+			_audioSource.Play();
+			yield return new WaitForSeconds(1.5f);
 			base.Destroy();
 		}
 
