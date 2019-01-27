@@ -22,15 +22,32 @@ namespace ggj
 
         public float HitIdle;
 
+		public GameObject dialogueMad;
+		public GameObject dialogueHappy;
 
-        private ShellState _shellState;
+
+		private ShellState _shellState;
         private IEnumerator _bumping;
+
+		private AudioSource _audioSource;
+
+		Quaternion savedRotation;
+		Vector3 savedPosition;
+
+		float timePositionReset = 0.5f;
+
+		GameObject currentDialogue;
 
         protected void Awake()
         {
             Shell.OnEnterShell = OnEnterShell;
             _shellState = ShellState.notAvailable;
-        }
+
+			_audioSource = this.GetComponent<AudioSource>();
+
+			savedPosition = this.transform.position;
+			savedRotation = this.transform.rotation;
+		}
 
         protected void OnCollisionEnter2D(Collision2D col)
         {
@@ -39,6 +56,12 @@ namespace ggj
                 _bumping == null)
             {
                 _bumping = Bump(col);
+
+				if( _audioSource != null )
+				{
+					_audioSource.Play();
+				}
+
                 StartCoroutine(_bumping);
             }
         }
@@ -65,6 +88,27 @@ namespace ggj
 
             yield return YieldPlay(ANIM_BACK);
             _shellState = ShellState.notAvailable;
+
+			Vector3 position = transform.position;
+			Quaternion rotation = transform.rotation;
+			float time = 0f;
+
+			while (transform.position.x != savedPosition.x)
+			{
+				time += 0.05f;
+
+				transform.position = Vector3.Lerp(position, savedPosition, time / timePositionReset);
+				transform.rotation = Quaternion.Lerp(rotation, savedRotation, time / timePositionReset);
+
+				yield return new WaitForSeconds(0.05f);
+			}
+
+			if( dialogueMad != null)
+			{
+				currentDialogue = Instantiate(dialogueMad, this.transform);
+			}
+
+
             Col.isTrigger = false;
             _bumping = null;
         }
