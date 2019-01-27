@@ -42,15 +42,16 @@ namespace ggj
             }
 
             _canContinue = false;
-            Invoke("AllowContinue", 3f);
+            Invoke("AllowContinue", 1f);
         }
 
         private void Update()
         {
             if (_canContinue)
             {
-                if (PlayerInput.Start == ButtonState.down)
+                if (PlayerInput.Start != ButtonState.none)
                 {
+                    this.Get<Save>().Reset();
                     SceneManager.LoadScene(0);
                 }
             }
