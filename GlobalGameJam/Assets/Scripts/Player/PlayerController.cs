@@ -8,6 +8,7 @@ namespace ggj
     {
         private const string ANIM_WALK = "Walk";
         private const string ANIM_SPEED = "Speed";
+        private const string ANIM_HIDE = "Hide";
 
         public ActorInput Input;
         public Rigidbody2D Rigidbody;
@@ -21,7 +22,9 @@ namespace ggj
 
         public IModificator Modificator { get; set; }
 
-		private AudioSource _audioSource;
+        public bool IsHidden { get; private set; }
+
+        private AudioSource _audioSource;
 
 
         protected void Awake()
@@ -80,6 +83,17 @@ namespace ggj
             Anim.SetBool(ANIM_WALK, mag > Epsilon);
             Anim.SetFloat(ANIM_SPEED, Mathf.Lerp(0f, AnimSpeed, mag / Speed));
 
+            // Hide under shell if stealth
+            if(ShellType == ShellType.bush)
+            {
+                IsHidden = mag < Epsilon;
+                Anim.SetBool(ANIM_HIDE, IsHidden);
+            }
+            else
+            {
+                Anim.SetBool(ANIM_HIDE, false);
+            }
+
             // Flip x
             if (Mathf.Abs(Rigidbody.velocity.x) > Epsilon)
             {
@@ -100,5 +114,13 @@ namespace ggj
             UpdateMove();
             UpdateAnimations();
         }
-    }
+
+		public void SwappedShellCallback(ShellType shellType)
+		{
+			if (shellType == ShellType.rock)
+			{
+				GetComponent<BulletRestart>().SetHp(10);
+			}
+		}
+	}
 }

@@ -37,6 +37,7 @@ namespace ggj
             var shellType = Type;
             player.ShellType = shellType;
             Type = playerType;
+			player.SwappedShellCallback(shellType);
         }
 
 
