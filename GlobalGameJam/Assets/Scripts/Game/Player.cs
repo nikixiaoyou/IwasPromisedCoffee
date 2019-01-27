@@ -15,14 +15,12 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-		GameObject go = Instantiate(DeadVFX, new Vector3(this.transform.position.x, this.transform.position.y, -5f), Quaternion.identity);
-		go.GetComponent<AudioSource>().Play();
+		PlaySmoke();
 
 		this.transform.position = _startingPosition;
 
 		GameObject goEnd = Instantiate(DeadVFX, new Vector3(this.transform.position.x, this.transform.position.y, -5f), Quaternion.identity);
 		Destroy(goEnd, 2f);
-		Destroy(go, 2f);
 
 
 		var rigidBody = this.GetComponent<Rigidbody2D>();
@@ -31,5 +29,12 @@ public class Player : MonoBehaviour
             rigidBody.velocity = Vector2.zero;
         }
     }
+
+	public void PlaySmoke()
+	{
+		GameObject go = Instantiate(DeadVFX, new Vector3(this.transform.position.x, this.transform.position.y, -5f), Quaternion.identity);
+		go.GetComponent<AudioSource>().Play();
+		Destroy(go, 2f);
+	}
 
 }
