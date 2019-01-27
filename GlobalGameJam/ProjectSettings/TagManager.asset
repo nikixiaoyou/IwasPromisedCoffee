@@ -7,6 +7,7 @@ TagManager:
   - Undefined
   - Bullet
   - Safe
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - Obstacle
+  - Player
+  - Exit
   - 
   - 
   - 

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Vector2 _startingPosition;
+	public GameObject DeadVFX;
+
+	private Vector2 _startingPosition;
     // Start is called before the first frame update
     private void Start()
     {
@@ -13,8 +15,17 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-        this.transform.position = _startingPosition;
-        var rigidBody = this.GetComponent<Rigidbody2D>();
+		GameObject go = Instantiate(DeadVFX, new Vector3(this.transform.position.x, this.transform.position.y, -5f), Quaternion.identity);
+		go.GetComponent<AudioSource>().Play();
+
+		this.transform.position = _startingPosition;
+
+		GameObject goEnd = Instantiate(DeadVFX, new Vector3(this.transform.position.x, this.transform.position.y, -5f), Quaternion.identity);
+		Destroy(goEnd, 2f);
+		Destroy(go, 2f);
+
+
+		var rigidBody = this.GetComponent<Rigidbody2D>();
         if(rigidBody!= null)
         {
             rigidBody.velocity = Vector2.zero;

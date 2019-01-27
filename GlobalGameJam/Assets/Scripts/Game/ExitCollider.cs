@@ -10,15 +10,25 @@ public class ExitCollider : MonoBehaviour
 
     private bool _loading = false;
     // Start is called before the first frame update
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         OnTriggerEnter2D(collision.collider);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    protected void OnTriggerEnter2D(Collider2D collider)
     {
         GoToNextScene();
     }
+
+#if CHEAT
+    protected void Update()
+    {
+        if(Input.GetKey(KeyCode.N))
+        {
+            GoToNextScene();
+        }
+    }
+#endif
 
     public void GoToNextScene()
     {
