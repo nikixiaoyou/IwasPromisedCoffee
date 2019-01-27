@@ -916,7 +916,7 @@ MonoBehaviour:
   - Type: 3
     Shell: {fileID: 21300000, guid: db3cc8ffb83ad2d48a1885f35f26fdf5, type: 3}
   Speed: 10
-  AnimSpeed: 2
+  AnimSpeed: 10
   Epsilon: 0.1
 --- !u!114 &1175360777548116367
 MonoBehaviour:
