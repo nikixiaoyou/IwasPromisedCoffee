@@ -10,7 +10,14 @@ public class IceDetection : MonoBehaviour
     {
         public void UpdateMove(PlayerController player)
         {
-            player.Rigidbody.AddForce(new Vector2(player.Input.Horizontal_L, player.Input.Vertical_L) * player.Speed);
+            if(player.ShellType != ShellType.tire)
+            {
+                player.Rigidbody.AddForce(new Vector2(player.Input.Horizontal_L, player.Input.Vertical_L) * player.Speed);
+            }
+            else
+            {
+                player.DefaultUpdateMove();
+            }
         }
     }
 
@@ -37,8 +44,8 @@ public class IceDetection : MonoBehaviour
         if (collider.gameObject.GetComponent<Ice>() != null)
         {
             OnIceExit.Invoke();
-             _iceAmount--;
-            if (_iceAmount == 1)
+            _iceAmount = _iceAmount > 0 ? _iceAmount - 1 : _iceAmount;
+            if (_iceAmount == 0)
             {
                 ClearIceDelegate();
             }
@@ -50,8 +57,9 @@ public class IceDetection : MonoBehaviour
         this.Get<PlayerController>().Modificator = new IceMovementDelegate();
     }
 
-    private void ClearIceDelegate()
+    public void ClearIceDelegate()
     {
         this.Get<PlayerController>().Modificator = null;
+        _iceAmount = 0;
     }
 }
