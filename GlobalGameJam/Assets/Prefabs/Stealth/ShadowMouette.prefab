@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1973080795}
   - component: {fileID: 7277000130939453711}
   - component: {fileID: 2611144600608411551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShadowMouette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
