@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01819373d8e55f45b3fd3db14fcc98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeadVFX: {fileID: 0}
+  DeadVFX: {fileID: 4486735612748338338, guid: a32baa128b49520439322d0224dba15d, type: 3}
 --- !u!82 &300584978597971045
 AudioSource:
   m_ObjectHideFlags: 0
