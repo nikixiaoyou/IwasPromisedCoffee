@@ -103,6 +103,7 @@ namespace ggj
 
 				_shellState = ShellState.taken;
                 Shell.SwapWithPlayer();
+                _save.SetFriendship((int)_initialShell - 1, haveIsOwnShell);
             }
         }
 
@@ -139,17 +140,12 @@ namespace ggj
 				if(!haveIsOwnShell)
 				{
 					currentDialogue = Instantiate(dialogueMad, this.transform);
-                    _save.SetFriendship((int)_initialShell - 1, false);
 				}
 				else
 				{
 					currentDialogue = Instantiate(dialogueHappy, this.transform);
-                    _save.SetFriendship((int)_initialShell - 1, true);
-                }
-				
+                }				
 			}
-
-
             Col.isTrigger = false;
             _bumping = null;
         }
