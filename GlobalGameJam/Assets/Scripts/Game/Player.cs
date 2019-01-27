@@ -52,9 +52,11 @@ public class Player : MonoBehaviour
 		while (totalTime < 1)
 		{
 			c = Mathf.Cos(totalTime * 2 * Mathf.PI);
+			c = c * .5f + 0.5f;
 			color.g = c;
 			color.b = c;
 			render.color = color;
+			totalTime += Time.deltaTime;
 			yield return null;
 		}
 		color.g = 1;
