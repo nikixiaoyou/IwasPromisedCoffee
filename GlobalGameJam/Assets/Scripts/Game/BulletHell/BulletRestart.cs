@@ -5,6 +5,7 @@ namespace ggj
 	public class BulletRestart : MonoBehaviour
 	{
 		public Vector2 InitialPosition;
+		public GameObject DeadVFX;
 
 		private Pool pool;
 
@@ -25,6 +26,7 @@ namespace ggj
 
 		private void RestartLevel()
 		{
+			Instantiate(DeadVFX, transform.position, Quaternion.identity);
 			transform.position = InitialPosition;
 
 			if (pool != null)
