@@ -50,7 +50,7 @@ namespace ggj
 		}
 
 
-		public void SetHP(int hp)
+		public void SetHp(int hp)
 		{
 			_hp = hp;
 		}
