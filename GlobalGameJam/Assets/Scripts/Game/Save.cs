@@ -6,12 +6,18 @@ namespace ggj
 {
     public class Save : MonoBehaviour
     {
-        public bool[] Friendship;
-
+        [Serializable]
         public class SaveState
         {
             public bool NewSave;
             public ShellType CurrentType;
+            public bool[] Friendship;
+
+            public SaveState()
+            {
+                Friendship = new bool[3];
+            }
+
         }
 
 
@@ -32,7 +38,6 @@ namespace ggj
             {
                 var go = new GameObject("SaveController");
                 saveCtrl = go.AddComponent<Save>();
-                saveCtrl.Friendship = new bool[3];
                 saveCtrl.Reset();
             }
             return saveCtrl;
@@ -42,6 +47,7 @@ namespace ggj
         public void UpdateShell(ShellType previous, ShellType current)
         {
             State.CurrentType = current;
+            Debug.Log("Set state to " + current);
         }
 
         protected void Awake()
@@ -52,19 +58,19 @@ namespace ggj
 
         public void Reset()
         {
-            for (int i = 0; i < Friendship.Length; ++i)
+            for (int i = 0; i < State.Friendship.Length; ++i)
             {
-                Friendship[i] = true;
+                State.Friendship[i] = true;
             }
         }
 
         public void SetFriendship(int friend, bool isFriend)
         {
-            if (friend < 0 || friend >= Friendship.Length)
+            if (friend < 0 || friend >= State.Friendship.Length)
             {
                 return;
             }
-            Friendship[friend] = isFriend;
+            State.Friendship[friend] = isFriend;
         }
     }
 }

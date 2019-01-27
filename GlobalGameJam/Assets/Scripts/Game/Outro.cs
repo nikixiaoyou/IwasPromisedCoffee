@@ -23,7 +23,7 @@ namespace ggj
             bool playerShellActive = true;
             for (int i = 0; i < Crabs.Length; ++i)
             {
-                bool friend = _save.Friendship[i];
+                bool friend = _save.State.Friendship[i];
                 CreditsCrabs crab = Crabs[i];
                 crab.Crab.SetActive(friend);
                 crab.Selfie.SetActive(friend);
