@@ -60,6 +60,8 @@ public class ExitCollider : MonoBehaviour
 
 		player.GetComponent<CircleCollider2D>().enabled = false;
 		player.GetComponent<AudioSource>().enabled = false;
+		player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
 		player.enabled = false;
 
 		float currentPositionX = player.transform.position.x;
@@ -78,25 +80,31 @@ public class ExitCollider : MonoBehaviour
         Camera fromCamera = null;
         var newRoot = new GameObject();
         newRoot.transform.position = new Vector3(1000, 0, 0);
-        foreach (var go in gos)
+
+
+		foreach (var go in gos)
         {
             go.transform.SetParent(newRoot.transform, false);
             if (fromCamera == null)
             {
-                fromCamera = go.GetComponent<Camera>();
-            }
+				fromCamera = go.GetComponent<Camera>();
+			}
         }
 
         yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
 
-        gos = SceneManager.GetSceneByBuildIndex(index).GetRootGameObjects();
-        Camera toCamera = null;
+		yield return null;
+
+		gos = SceneManager.GetSceneByBuildIndex(index).GetRootGameObjects();
+
+
+		Camera toCamera = null;
         foreach (var go in gos)
         {
             if (toCamera == null)
             {
                 toCamera = go.GetComponent<Camera>();
-                break;
+               break;
             }
         }
 
