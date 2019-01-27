@@ -906,8 +906,9 @@ MonoBehaviour:
   Anim: {fileID: 9154710119006942243}
   ShellType: 0
   Shell: {fileID: 6879886818699061317}
+  ShellSkins: []
   Speed: 10
-  AnimSpeed: 2
+  AnimSpeed: 10
   Epsilon: 0.1
   HideEpsilon: 2
 --- !u!114 &1175360777548116367
@@ -996,6 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadVFX: {fileID: 4486735612748338338, guid: a32baa128b49520439322d0224dba15d, type: 3}
+  Shell: {fileID: 5879454614168228420}
 --- !u!82 &300584978597971045
 AudioSource:
   m_ObjectHideFlags: 0

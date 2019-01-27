@@ -25,6 +25,10 @@ namespace ggj
             Instance = this;
            //DontDestroyOnLoad(gameObject);
             Services = new ServicesLocator();
+
+
+			// Default services
+            this.Register(Save.GetOrCreate());
         }
     }
 }

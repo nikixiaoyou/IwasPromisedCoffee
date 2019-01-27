@@ -49,7 +49,7 @@ namespace ggj
             Input.ControllerId = 1;
 #endif
 
-            SkinPlayer(this.Get<SaveController>().State.CurrentType);
+            SkinPlayer(this.Get<Save>().State.CurrentType);
         }
 
         protected void OnDestroy()
@@ -104,9 +104,8 @@ namespace ggj
             // Hide under shell if stealth
             if(ShellType == ShellType.bush)
             {
-                IsHidden = mag < HideEpsilon;
-                Anim.SetBool(ANIM_HIDE, IsHidden);
-            }
+					IsHidden = mag < HideEpsilon;
+                	Anim.SetBool(ANIM_HIDE, IsHidden);            }
             else
             {
                 Anim.SetBool(ANIM_HIDE, false);
