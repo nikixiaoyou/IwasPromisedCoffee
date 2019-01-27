@@ -28,6 +28,7 @@ namespace ggj
         public float Speed = 5f;
         public float AnimSpeed = 2f;
         public float Epsilon = 0.05f;
+        public float HideEpsilon = 1f;
 
         public IModificator Modificator { get; set; }
 
@@ -103,7 +104,7 @@ namespace ggj
             // Hide under shell if stealth
             if(ShellType == ShellType.bush)
             {
-                IsHidden = mag < Epsilon;
+                IsHidden = mag < HideEpsilon;
                 Anim.SetBool(ANIM_HIDE, IsHidden);
             }
             else
