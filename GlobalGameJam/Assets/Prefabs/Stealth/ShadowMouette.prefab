@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1973080795}
   - component: {fileID: 7277000130939453711}
   - component: {fileID: 2611144600608411551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShadowMouette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5808406968823665342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.91, y: -0.49, z: -1.7690117}
+  m_LocalPosition: {x: 0, y: 0, z: -1.7690117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
