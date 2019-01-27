@@ -48,5 +48,10 @@ namespace ggj
 
 			_hp = MaxHp;
 		}
+
+		public void SetHp(int hp)
+		{
+			_hp = hp;
+		}
 	}
 }

@@ -38,6 +38,8 @@ namespace ggj
             player.ShellType = shellType;
             Type = playerType;
 
+			player.SwappedShellCallback(shellType);
+
             this.Get<SaveController>().UpdateShell(playerType, shellType);
         }
 
