@@ -41,7 +41,7 @@ public class ExitCollider : MonoBehaviour
             player.transform.position += new Vector3(300 * Time.deltaTime, 0, 0);
             yield return null;
         }
-        GameManager.Instance.Services.UnregisterAll();
+        GameManager.Instance.Destroy();
 
         var gos = SceneManager.GetSceneByBuildIndex(index-1).GetRootGameObjects();
         Camera fromCamera = null;
