@@ -28,16 +28,11 @@ namespace ggj
 			if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
 			{
 				_hp--;
-				col.GetComponent<Bullet>().Destroy();
 
 				if (_playerController.ShellType != ShellType.rock || _hp <= 0)
 				{
 					RestartLevel();
-				}
-				else
-				{
-					player.PlaySmoke();
-					player.StartDamagedAnimation();
+					col.GetComponent<Bullet>().Destroy();
 				}
 			}
 		}
@@ -52,11 +47,6 @@ namespace ggj
 			}
 
 			_hp = MaxHp;
-		}
-
-		public void SetHp(int hp)
-		{
-			_hp = hp;
 		}
 	}
 }
