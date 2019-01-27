@@ -15,7 +15,12 @@ namespace ggj
 
             public SaveState()
             {
+                CurrentType = ShellType.basic;
                 Friendship = new bool[3];
+                for (int i = 0, FriendshipLength = Friendship.Length; i < FriendshipLength; i++)
+                {
+                    Friendship[i] = true;
+                }
             }
 
         }
@@ -58,10 +63,7 @@ namespace ggj
 
         public void Reset()
         {
-            for (int i = 0; i < State.Friendship.Length; ++i)
-            {
-                State.Friendship[i] = true;
-            }
+            State = new SaveState();
         }
 
         public void SetFriendship(int friend, bool isFriend)
