@@ -4,21 +4,22 @@ namespace ggj
 {
 	public class BulletRestart : MonoBehaviour
 	{
-		public Vector2 InitialPosition;
-		public GameObject DeadVFX;
+		public Vector3 InitialPosition;
+		
 
 		private Pool pool;
+		private Player player;
 
 		private void Start()
 		{
+			InitialPosition = this.transform.position;
+			player = this.GetComponent<Player>();
 			pool = GameObject.Find("Pool").GetComponent<Pool>();
-
-			RestartLevel();
 		}
 
 		private void OnTriggerEnter2D(Collider2D col)
 		{
-			if (col.tag == "Bullet")
+			if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
 			{
 				RestartLevel();
 			}
@@ -26,8 +27,7 @@ namespace ggj
 
 		private void RestartLevel()
 		{
-			Instantiate(DeadVFX, transform.position, Quaternion.identity);
-			transform.position = InitialPosition;
+			player.Reset();
 
 			if (pool != null)
 			{
