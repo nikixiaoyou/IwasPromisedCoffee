@@ -8,9 +8,17 @@ public class ExitCollider : MonoBehaviour
 {
     private const float _kTransitionTime = 1.0f;
 
+	private AudioSource audioSource;
+
     private bool _loading = false;
-    // Start is called before the first frame update
-    protected void OnCollisionEnter2D(Collision2D collision)
+
+	private void Awake()
+	{
+		audioSource = this.GetComponent<AudioSource>();
+	}
+
+	// Start is called before the first frame update
+	protected void OnCollisionEnter2D(Collision2D collision)
     {
         OnTriggerEnter2D(collision.collider);
     }
@@ -36,8 +44,12 @@ public class ExitCollider : MonoBehaviour
         {
             return;
         }
+		if (audioSource != null)
+		{
+			audioSource.Play();
+		}
 
-        _loading = true;
+		_loading = true;
         GameManager.Instance.StartCoroutine(GoToNextSceneRoutine());
     }
 
@@ -46,11 +58,20 @@ public class ExitCollider : MonoBehaviour
         int index = SceneManager.GetActiveScene().buildIndex + 1;
         var player = GameManager.Instance.Services.Get<PlayerController>();
 
-        for (float t = 0; t < 1.0; t += Time.deltaTime)
-        {
-            player.transform.position += new Vector3(300 * Time.deltaTime, 0, 0);
-            yield return null;
-        }
+		player.GetComponent<CircleCollider2D>().enabled = false;
+		player.GetComponent<AudioSource>().enabled = false;
+		player.enabled = false;
+
+		float currentPositionX = player.transform.position.x;
+
+
+		while(player.transform.position.x < currentPositionX + 6f )
+		{
+			player.transform.position += new Vector3( 0.05f, 0, 0);
+			yield return new WaitForSeconds(0.05f);
+		}
+
+		
         GameManager.Instance.Destroy();
 
         var gos = SceneManager.GetSceneByBuildIndex(index-1).GetRootGameObjects();
