@@ -87,13 +87,9 @@ namespace ggj
             // Hide under shell if stealth
             if(ShellType == ShellType.bush)
             {
-<<<<<<< HEAD
                 IsHidden = mag < HideEpsilon;
                 Anim.SetBool(ANIM_HIDE, IsHidden);
-=======
-                IsHidden = mag < Epsilon;
-                Anim.SetBool(ANIM_HIDE, IsHidden);
->>>>>>> 26ec36837e78e2fbc6da2ee043b8b7203195c56f
+
             }
             else
             {

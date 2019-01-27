@@ -25,6 +25,8 @@ namespace ggj
 		public GameObject dialogueMad;
 		public GameObject dialogueHappy;
 
+		public GameObject VFXHit;
+
 
 		private ShellState _shellState;
         private IEnumerator _bumping;
@@ -40,6 +42,8 @@ namespace ggj
 
 		bool haveIsOwnShell = true;
 
+		ParticleSystem[] system;
+
         protected void Awake()
         {
             Shell.OnEnterShell = OnEnterShell;
@@ -49,6 +53,8 @@ namespace ggj
 
 			savedPosition = this.transform.position;
 			savedRotation = this.transform.rotation;
+
+			system = this.GetComponentsInChildren<ParticleSystem>();
 		}
 
         protected void OnCollisionEnter2D(Collision2D col)
@@ -68,6 +74,14 @@ namespace ggj
 				if( _audioSource != null )
 				{
 					_audioSource.Play();
+				}
+
+				if(system != null && system.Length != 0)
+				{
+					foreach(ParticleSystem part in system)
+					{
+						part.Play();
+					}
 				}
 
                 StartCoroutine(_bumping);
