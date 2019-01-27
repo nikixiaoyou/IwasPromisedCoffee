@@ -97,6 +97,7 @@ public class ExitCollider : MonoBehaviour
 
 		gos = SceneManager.GetSceneByBuildIndex(index).GetRootGameObjects();
 
+		yield return null;
 
 		Camera toCamera = null;
         foreach (var go in gos)
@@ -104,7 +105,11 @@ public class ExitCollider : MonoBehaviour
             if (toCamera == null)
             {
                 toCamera = go.GetComponent<Camera>();
-               break;
+
+				if (toCamera != null)
+				{
+					break;
+				}
             }
         }
 
