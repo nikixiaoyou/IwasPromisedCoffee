@@ -26,7 +26,7 @@ namespace ggj
             Services = new ServicesLocator();
 
             // Default services
-            this.Register(new SaveController());
+            this.Register(SaveController.GetOrCreate());
         }
     }
 }
