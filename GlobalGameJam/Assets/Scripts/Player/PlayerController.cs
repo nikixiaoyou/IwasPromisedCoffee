@@ -52,13 +52,8 @@ namespace ggj
             }
             else
             {
+				DefaultUpdateMove();
 				
-				if (inputAxis.magnitude > 1)
-				{
-					inputAxis = inputAxis.normalized;
-				}
-
-				Rigidbody.velocity = Speed * inputAxis;
             }
 
 
@@ -71,6 +66,17 @@ namespace ggj
 				_audioSource.pitch = 0;
 			}
 
+        }
+
+        public void DefaultUpdateMove()
+        {
+            Vector2 inputAxis = new Vector2(Input.Horizontal_L, Input.Vertical_L);
+            if (inputAxis.magnitude > 1)
+            {
+                inputAxis = inputAxis.normalized;
+            }
+
+            Rigidbody.velocity = Speed * inputAxis;
         }
 
         protected virtual void UpdateAnimations()
