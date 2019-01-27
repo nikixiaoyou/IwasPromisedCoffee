@@ -149,7 +149,11 @@ namespace ggj
 		{
 			if (shellType == ShellType.rock)
 			{
-				GetComponent<BulletRestart>().SetHp(10);
+                var bulletRestart = GetComponent<BulletRestart>();
+                if (bulletRestart != null)
+                {
+                    bulletRestart.SetHp(10);
+                }
 			}
 		}
 	}

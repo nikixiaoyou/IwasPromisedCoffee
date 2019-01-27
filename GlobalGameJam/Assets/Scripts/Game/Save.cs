@@ -4,44 +4,47 @@ using UnityEngine;
 
 namespace ggj
 {
-    public class SaveState
+    public class SaveController : MonoBehaviour
     {
-        public ShellType CurrentType;
-    }
+        public class SaveState
+        {
+            public bool NewSave;
+            public ShellType CurrentType;
+        }
 
-    public class SaveController
-    {
+
         private const string STATE = "ggj_sav";
 
         public SaveState State { get; private set; }
 
 
-        public SaveController()
+        public static SaveController GetOrCreate()
         {
-            var saveStr = PlayerPrefs.GetString(STATE);
-            if(string.IsNullOrEmpty(saveStr))
+            SaveController saveCtrl = null;
+            var saveInstance = GameObject.Find("SaveController");
+            if(saveInstance != null)
             {
-                State = new SaveState();
+                saveCtrl = saveInstance.GetComponent<SaveController>();
             }
-            else 
+            if (saveCtrl == null)
             {
-                State = JsonUtility.FromJson<SaveState>(saveStr);
+                var go = new GameObject("SaveController");
+                saveCtrl = go.AddComponent<SaveController>();
             }
-
+            return saveCtrl;
         }
 
 
         public void UpdateShell(ShellType previous, ShellType current)
         {
             State.CurrentType = current;
-            Save();
         }
 
-
-        private void Save()
+        protected void Awake()
         {
-            var saveStr = JsonUtility.ToJson(State);
-            PlayerPrefs.SetString(STATE, saveStr);
+            State = new SaveState();
+            DontDestroyOnLoad(gameObject);
         }
+
     }
 }
