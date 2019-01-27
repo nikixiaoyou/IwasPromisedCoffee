@@ -6,6 +6,7 @@ namespace ggj
 {
     public class SaveState
     {
+        public bool NewSave;
         public ShellType CurrentType;
     }
 
@@ -27,9 +28,16 @@ namespace ggj
             {
                 State = JsonUtility.FromJson<SaveState>(saveStr);
             }
-
         }
 
+        public void Reset()
+        {
+            if (!State.NewSave)
+            {
+                State = new SaveState();
+                Save();
+            }
+        }
 
         public void UpdateShell(ShellType previous, ShellType current)
         {
@@ -40,6 +48,7 @@ namespace ggj
 
         private void Save()
         {
+            State.NewSave = false;
             var saveStr = JsonUtility.ToJson(State);
             PlayerPrefs.SetString(STATE, saveStr);
         }
