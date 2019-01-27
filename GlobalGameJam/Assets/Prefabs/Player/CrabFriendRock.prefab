@@ -55,7 +55,8 @@ MonoBehaviour:
   HitIdle: 2
   dialogueMad: {fileID: 8476256171892903225, guid: c6beeaa07e7334741924ea9d41afdd37,
     type: 3}
-  dialogueHappy: {fileID: 0}
+  dialogueHappy: {fileID: 5272141420956470736, guid: 7cc737d2ffff4d345b49758f147b16ab,
+    type: 3}
 --- !u!50 &5296507587602596898
 Rigidbody2D:
   serializedVersion: 4

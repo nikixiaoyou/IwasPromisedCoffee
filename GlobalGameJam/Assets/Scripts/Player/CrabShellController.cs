@@ -38,6 +38,8 @@ namespace ggj
 
 		GameObject currentDialogue;
 
+		bool haveIsOwnShell = true;
+
         protected void Awake()
         {
             Shell.OnEnterShell = OnEnterShell;
@@ -57,6 +59,12 @@ namespace ggj
             {
                 _bumping = Bump(col);
 
+				if(currentDialogue != null)
+				{
+					Destroy(currentDialogue);
+					currentDialogue = null;
+				}
+
 				if( _audioSource != null )
 				{
 					_audioSource.Play();
@@ -70,7 +78,9 @@ namespace ggj
         {
             if(_shellState == ShellState.availabe)
             {
-                _shellState = ShellState.taken;
+				haveIsOwnShell = !haveIsOwnShell;
+
+				_shellState = ShellState.taken;
                 Shell.SwapWithPlayer();
             }
         }
@@ -95,17 +105,25 @@ namespace ggj
 
 			while (transform.position.x != savedPosition.x)
 			{
-				time += 0.05f;
+				time += 0.02f;
 
 				transform.position = Vector3.Lerp(position, savedPosition, time / timePositionReset);
 				transform.rotation = Quaternion.Lerp(rotation, savedRotation, time / timePositionReset);
 
-				yield return new WaitForSeconds(0.05f);
+				yield return new WaitForSeconds(0.02f);
 			}
 
 			if( dialogueMad != null)
 			{
-				currentDialogue = Instantiate(dialogueMad, this.transform);
+				if(!haveIsOwnShell)
+				{
+					currentDialogue = Instantiate(dialogueMad, this.transform);
+				}
+				else
+				{
+					currentDialogue = Instantiate(dialogueHappy, this.transform);
+				}
+				
 			}
 
 
