@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace ggj
 {
@@ -83,6 +84,7 @@ namespace ggj
 
         }
 
+
         public void DefaultUpdateMove()
         {
             Vector2 inputAxis = new Vector2(Input.Horizontal_L, Input.Vertical_L);
@@ -131,6 +133,13 @@ namespace ggj
             Input.UpdateInput();
             UpdateMove();
             UpdateAnimations();
+
+            // Quit anytime on select
+            if (Input.Select != ButtonState.none)
+            {
+                this.Get<Save>().Reset();
+                SceneManager.LoadScene(0);
+            }
         }
 
 
