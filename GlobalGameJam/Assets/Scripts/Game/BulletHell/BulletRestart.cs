@@ -4,35 +4,49 @@ namespace ggj
 {
 	public class BulletRestart : MonoBehaviour
 	{
-		public Vector2 InitialPosition;
-		public GameObject DeadVFX;
-
 		private Pool pool;
+		private Player player;
+		public GameObject DeadVFX;
+		public int MaxHp;
+
+		private PlayerController _playerController;
+		private int _hp;
+
 
 		private void Start()
 		{
+			player = this.GetComponent<Player>();
 			pool = GameObject.Find("Pool").GetComponent<Pool>();
 
-			RestartLevel();
+			_playerController = GetComponent<PlayerController>();
+
+
 		}
 
 		private void OnTriggerEnter2D(Collider2D col)
 		{
-			if (col.tag == "Bullet")
+			if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
 			{
-				RestartLevel();
+				_hp--;
+
+				if (_playerController.ShellType != ShellType.rock || _hp <= 0)
+				{
+					RestartLevel();
+					col.GetComponent<Bullet>().Destroy();
+				}
 			}
 		}
 
 		private void RestartLevel()
 		{
-			Instantiate(DeadVFX, transform.position, Quaternion.identity);
-			transform.position = InitialPosition;
+			player.Reset();
 
 			if (pool != null)
 			{
 				pool.Reset();
 			}
+
+			_hp = MaxHp;
 		}
 	}
 }
