@@ -69,7 +69,7 @@ public class ExitCollider : MonoBehaviour
 
 		while(player.transform.position.x < currentPositionX + 6f )
 		{
-			player.transform.position += new Vector3( 0.05f, 0, 0);
+			player.transform.position += new Vector3( 0.20f, 0, 0);
 			yield return new WaitForSeconds(0.05f);
 		}
 
