@@ -6,6 +6,8 @@ namespace ggj
 {
     public class Save : MonoBehaviour
     {
+        public bool[] Friendship;
+
         public class SaveState
         {
             public bool NewSave;
@@ -30,6 +32,8 @@ namespace ggj
             {
                 var go = new GameObject("SaveController");
                 saveCtrl = go.AddComponent<Save>();
+                saveCtrl.Friendship = new bool[3];
+                saveCtrl.Reset();
             }
             return saveCtrl;
         }
@@ -46,5 +50,21 @@ namespace ggj
             DontDestroyOnLoad(gameObject);
         }
 
+        public void Reset()
+        {
+            for (int i = 0; i < Friendship.Length; ++i)
+            {
+                Friendship[i] = true;
+            }
+        }
+
+        public void SetFriendship(int friend, bool isFriend)
+        {
+            if (friend < 0 || friend >= Friendship.Length)
+            {
+                return;
+            }
+            Friendship[friend] = isFriend;
+        }
     }
 }

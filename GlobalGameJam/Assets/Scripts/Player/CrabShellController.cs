@@ -33,6 +33,9 @@ namespace ggj
 
 		private AudioSource _audioSource;
 
+        private Save _save;
+        private ShellType _initialShell;
+
 		Quaternion savedRotation;
 		Vector3 savedPosition;
 
@@ -54,7 +57,11 @@ namespace ggj
 			savedPosition = this.transform.position;
 			savedRotation = this.transform.rotation;
 
+            _save = GameObject.Find("SaveController").GetComponent<Save>();
+
 			system = this.GetComponentsInChildren<ParticleSystem>();
+
+            _initialShell = Shell.Type;
 		}
 
         protected void OnCollisionEnter2D(Collision2D col)
@@ -132,11 +139,13 @@ namespace ggj
 				if(!haveIsOwnShell)
 				{
 					currentDialogue = Instantiate(dialogueMad, this.transform);
+                    _save.SetFriendship((int)_initialShell - 1, false);
 				}
 				else
 				{
 					currentDialogue = Instantiate(dialogueHappy, this.transform);
-				}
+                    _save.SetFriendship((int)_initialShell - 1, true);
+                }
 				
 			}
 
