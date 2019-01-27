@@ -909,6 +909,7 @@ MonoBehaviour:
   Speed: 10
   AnimSpeed: 2
   Epsilon: 0.1
+  HideEpsilon: 2
 --- !u!114 &1175360777548116367
 MonoBehaviour:
   m_ObjectHideFlags: 0
