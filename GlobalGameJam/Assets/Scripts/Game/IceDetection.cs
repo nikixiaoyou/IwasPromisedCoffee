@@ -6,13 +6,15 @@ using UnityEngine.Events;
 
 public class IceDetection : MonoBehaviour
 {
+    private static float _kAccelerationMutliplier = 60.0f;
+
     public class IceMovementDelegate : IModificator
     {
         public void UpdateMove(PlayerController player)
         {
 			if (player.ShellType != ShellType.tire)
 			{
-				player.Rigidbody.AddForce(new Vector2(player.Input.Horizontal_L, player.Input.Vertical_L) * player.Speed);
+				player.Rigidbody.AddForce(new Vector2(player.Input.Horizontal_L, player.Input.Vertical_L) * player.Speed * _kAccelerationMutliplier * Time.deltaTime);
 			}
 			else
 			{
