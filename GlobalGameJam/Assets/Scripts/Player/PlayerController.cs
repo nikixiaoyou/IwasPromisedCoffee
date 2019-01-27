@@ -114,5 +114,13 @@ namespace ggj
             UpdateMove();
             UpdateAnimations();
         }
-    }
+
+		public void SwappedShellCallback(ShellType shellType)
+		{
+			if (shellType == ShellType.rock)
+			{
+				GetComponent<BulletRestart>().SetHp(10);
+			}
+		}
+	}
 }
