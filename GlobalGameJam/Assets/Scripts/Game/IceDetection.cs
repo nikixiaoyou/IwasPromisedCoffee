@@ -44,8 +44,7 @@ public class IceDetection : MonoBehaviour
         if (collider.gameObject.GetComponent<Ice>() != null)
         {
             OnIceExit.Invoke();
-             _iceAmount--;
-			_iceAmount = _iceAmount > 0 ? _iceAmount - 1 : _iceAmount;
+			_iceAmount = _iceAmount > 0 ? _iceAmount - 1 : 0;
 			if (_iceAmount == 0)
 
 			{
