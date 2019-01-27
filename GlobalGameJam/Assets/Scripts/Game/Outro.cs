@@ -6,7 +6,9 @@ namespace ggj
     public class Outro : MonoBehaviour
     {
         public CreditsCrabs[] Crabs; // Need to be in the same order as ShellType
-        public GameObject PlayerShell;
+        public GameObject PlayerShell; // Player selfie shell
+        public SpriteRenderer Shell; // Movable player's shell
+        public Sprite BushShell;
 
 
         private Save _save;
@@ -30,6 +32,11 @@ namespace ggj
                 }
             }
             PlayerShell.SetActive(playerShellActive);
+
+            if (playerShellActive)
+            {
+                Shell.sprite = BushShell;
+            }
         }
     }
 

@@ -247,6 +247,8 @@ MonoBehaviour:
     Selfie: {fileID: 1943343950}
     SelfieShell: {fileID: 106138735}
   PlayerShell: {fileID: 1520418384}
+  Shell: {fileID: 1601054851}
+  BushShell: {fileID: 21300000, guid: db3cc8ffb83ad2d48a1885f35f26fdf5, type: 3}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -155109,7 +155111,7 @@ PrefabInstance:
     - target: {fileID: 2701812078058950858, guid: 0311797ccba5e0042af5220be7d0c10b,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0311797ccba5e0042af5220be7d0c10b, type: 3}
@@ -155726,6 +155728,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1770195084341344228, guid: 0311797ccba5e0042af5220be7d0c10b,
     type: 3}
   m_PrefabInstance: {fileID: 588473852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1601054851 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6879886818699061317, guid: 35b9780e2a2404ceb8ba59df669c80b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 570674233}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1649552697 stripped
 GameObject:
