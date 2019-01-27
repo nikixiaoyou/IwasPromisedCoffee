@@ -249,6 +249,7 @@ MonoBehaviour:
   PlayerShell: {fileID: 1520418384}
   Shell: {fileID: 1601054851}
   BushShell: {fileID: 21300000, guid: db3cc8ffb83ad2d48a1885f35f26fdf5, type: 3}
+  PlayerInput: {fileID: 1852668946}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -155820,6 +155821,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e82e78dd3dc013044bdfde8dc2d40981, type: 3}
+--- !u!114 &1852668946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1175360777548116367, guid: 35b9780e2a2404ceb8ba59df669c80b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 570674233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1409730395d154489a14386f516a27d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1943343950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8528612801658730735, guid: 0311797ccba5e0042af5220be7d0c10b,

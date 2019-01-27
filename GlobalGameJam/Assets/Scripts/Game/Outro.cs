@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ggj
 {
@@ -9,9 +10,11 @@ namespace ggj
         public GameObject PlayerShell; // Player selfie shell
         public SpriteRenderer Shell; // Movable player's shell
         public Sprite BushShell;
-
+        public ActorInput PlayerInput;
 
         private Save _save;
+
+        private bool _canContinue;
 
         private void Start()
         {
@@ -37,6 +40,25 @@ namespace ggj
             {
                 Shell.sprite = BushShell;
             }
+
+            _canContinue = false;
+            Invoke("AllowContinue", 3f);
+        }
+
+        private void Update()
+        {
+            if (_canContinue)
+            {
+                if (PlayerInput.Start == ButtonState.down)
+                {
+                    SceneManager.LoadScene(0);
+                }
+            }
+        }
+
+        private void AllowContinue()
+        {
+            _canContinue = true;
         }
     }
 

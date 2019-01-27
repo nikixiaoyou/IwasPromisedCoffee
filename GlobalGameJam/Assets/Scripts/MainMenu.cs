@@ -10,6 +10,7 @@ namespace ggj
 
         private ActorInput _input;
         private int _currentSelection;
+        private bool _canContinue;
 
         private void Start()
         {
@@ -22,8 +23,11 @@ namespace ggj
 #endif
 
             Select(0);
-        }
 
+            _canContinue = false;
+            Invoke("AllowContinue", 2f);
+        }
+    
         private void Update()
         {
             _input.UpdateInput();
@@ -46,12 +50,13 @@ namespace ggj
                 }
             }
 
-            if (_input.A == ButtonState.pressing || _input.Start == ButtonState.pressing)
+            if (_canContinue && (_input.A == ButtonState.down || _input.Start == ButtonState.down))
             {
                 switch(_currentSelection)
                 {
                     case 0:
                         // Intro
+                        GameObject.Find("SaveController").GetComponent<Save>().Reset();
                         int index = SceneManager.GetActiveScene().buildIndex + 1;
                         SceneManager.LoadScene(index);
                         break;
@@ -84,6 +89,11 @@ namespace ggj
 
             arrowObjects[option].LeftArrow.SetActive(false);
             arrowObjects[option].RightArrow.SetActive(false);
+        }
+
+        private void AllowContinue()
+        {
+            _canContinue = true;
         }
     }
 
