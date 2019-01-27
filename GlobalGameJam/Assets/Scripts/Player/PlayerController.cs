@@ -97,7 +97,8 @@ namespace ggj
         protected virtual void UpdateAnimations()
         {
             // Walk / Idle animations
-            var mag = Rigidbody.velocity.magnitude;
+            Vector2 velocity = Speed * new Vector2(Input.Horizontal_L, Input.Vertical_L);
+            var mag = velocity.magnitude;
             Anim.SetBool(ANIM_WALK, mag > Epsilon);
             Anim.SetFloat(ANIM_SPEED, Mathf.Lerp(0f, AnimSpeed, mag / Speed));
 
@@ -112,10 +113,10 @@ namespace ggj
             }
 
             // Flip x
-            if (Mathf.Abs(Rigidbody.velocity.x) > Epsilon)
+            if (Mathf.Abs(velocity.x) > Epsilon)
             {
                 var s = Anim.transform.localScale;
-                s.x = Mathf.Abs(s.x) * Mathf.Sign(Rigidbody.velocity.x);
+                s.x = Mathf.Abs(s.x) * Mathf.Sign(velocity.x);
                 Anim.transform.localScale = s;
             }
         }
