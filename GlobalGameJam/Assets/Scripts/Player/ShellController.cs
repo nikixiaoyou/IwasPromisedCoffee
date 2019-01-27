@@ -37,6 +37,8 @@ namespace ggj
             var shellType = Type;
             player.ShellType = shellType;
             Type = playerType;
+
+            this.Get<SaveController>().UpdateShell(playerType, shellType);
         }
 
 
