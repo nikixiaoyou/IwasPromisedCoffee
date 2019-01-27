@@ -23,10 +23,8 @@ namespace ggj
         protected void Awake()
         {
             Instance = this;
+           //DontDestroyOnLoad(gameObject);
             Services = new ServicesLocator();
-
-            // Default services
-            this.Register(new SaveController());
         }
     }
 }
