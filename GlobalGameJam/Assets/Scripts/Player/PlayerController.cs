@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace ggj
 {
     public class PlayerController : MonoBehaviour
     {
+        [Serializable]
+        public class ShellSkin
+        {
+            public ShellType Type;
+            public Sprite Shell;
+        }
+
         private const string ANIM_WALK = "Walk";
         private const string ANIM_SPEED = "Speed";
         private const string ANIM_HIDE = "Hide";
@@ -15,6 +23,7 @@ namespace ggj
         public Animator Anim;
         public ShellType ShellType;
         public SpriteRenderer Shell;
+        public ShellSkin[] ShellSkins;
 
         public float Speed = 5f;
         public float AnimSpeed = 2f;
@@ -39,6 +48,8 @@ namespace ggj
 #else
             Input.ControllerId = 1;
 #endif
+
+            SkinPlayer(this.Get<SaveController>().State.CurrentType);
         }
 
         protected void OnDestroy()
@@ -56,13 +67,8 @@ namespace ggj
             }
             else
             {
+				DefaultUpdateMove();
 				
-				if (inputAxis.magnitude > 1)
-				{
-					inputAxis = inputAxis.normalized;
-				}
-
-				Rigidbody.velocity = Speed * inputAxis;
             }
 
 
@@ -77,6 +83,17 @@ namespace ggj
 
         }
 
+        public void DefaultUpdateMove()
+        {
+            Vector2 inputAxis = new Vector2(Input.Horizontal_L, Input.Vertical_L);
+            if (inputAxis.magnitude > 1)
+            {
+                inputAxis = inputAxis.normalized;
+            }
+
+            Rigidbody.velocity = Speed * inputAxis;
+        }
+
         protected virtual void UpdateAnimations()
         {
             // Walk / Idle animations
@@ -87,13 +104,8 @@ namespace ggj
             // Hide under shell if stealth
             if(ShellType == ShellType.bush)
             {
-<<<<<<< HEAD
                 IsHidden = mag < HideEpsilon;
                 Anim.SetBool(ANIM_HIDE, IsHidden);
-=======
-                IsHidden = mag < Epsilon;
-                Anim.SetBool(ANIM_HIDE, IsHidden);
->>>>>>> 26ec36837e78e2fbc6da2ee043b8b7203195c56f
             }
             else
             {
@@ -120,5 +132,30 @@ namespace ggj
             UpdateMove();
             UpdateAnimations();
         }
-    }
+
+
+        private void SkinPlayer(ShellType type)
+        {
+            foreach (var skin in ShellSkins)
+            {
+                if (skin.Type == type)
+                {
+                    Shell.sprite = skin.Shell;
+                    ShellType = skin.Type;
+                }
+            }
+        }
+
+		public void SwappedShellCallback(ShellType shellType)
+		{
+			if (shellType == ShellType.rock)
+			{
+                var bulletRestart = GetComponent<BulletRestart>();
+                if (bulletRestart != null)
+                {
+                    bulletRestart.SetHp(10);
+                }
+			}
+		}
+	}
 }
