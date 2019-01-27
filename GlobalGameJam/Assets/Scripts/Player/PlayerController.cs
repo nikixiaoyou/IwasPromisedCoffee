@@ -49,7 +49,7 @@ namespace ggj
             Input.ControllerId = 1;
 #endif
 
-            SkinPlayer(this.Get<SaveController>().State.CurrentType);
+            SkinPlayer(this.Get<Save>().State.CurrentType);
         }
 
         protected void OnDestroy()
