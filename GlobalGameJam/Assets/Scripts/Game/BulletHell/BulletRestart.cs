@@ -37,6 +37,7 @@ namespace ggj
 				else
 				{
 					player.PlaySmoke();
+					player.StartDamagedAnimation();
 				}
 			}
 		}

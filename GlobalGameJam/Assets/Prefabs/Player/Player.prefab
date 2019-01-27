@@ -1005,6 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadVFX: {fileID: 4486735612748338338, guid: a32baa128b49520439322d0224dba15d, type: 3}
+  Shell: {fileID: 5879454614168228420}
 --- !u!82 &300584978597971045
 AudioSource:
   m_ObjectHideFlags: 0
